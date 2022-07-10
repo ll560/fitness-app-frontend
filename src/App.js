@@ -1,40 +1,40 @@
-import Nav from '../src/components/Nav/Nav'
+import { useState, useEffect } from 'react';
+import Header from './components/Header/Header'
+import {Routes, Route} from 'react-router-dom'
+import Login from './pages/Login';
 import './App.css';
 import Button from 'react-bootstrap/Button';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import Footer from './components/Footer/Footer';
+import Workouts from './pages/Workouts';
+import Home from './pages/Home';
+import SignUp from './pages/SignUp';
 
-function App() {
+import * as usersService from '../src/utilities/users-service'
+
+const App = () => {
+  const [user, setUser] = useState('')
+  
+
+  useEffect(() => {
+    console.log('we are updating')
+   if (usersService.getUser())  
+       setUser(usersService.getUser().firstName)
+    
+  }, [])
+ 
   return (
     <div className="App">
-     <Nav></Nav>
-  <div className="mb-2">
-    <Button type="button" className="btn btn-primary">
-      Large button
-    </Button>
-    <Button variant="secondary" size="lg">
-      Large button
-    </Button>
-  </div>
-  <div>
-    <Button variant="primary" size="sm">
-      Small button
-    </Button>{' '}
-    <Button variant="secondary" size="sm">
-      Small button
-    </Button>
-  </div>
-
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-  
+     <Header user={user} setUser={setUser} logOut={usersService.logOut}/>
+     <Routes>
+       <Route path='/' element={<Home/>}/>
+       <Route path='/login' element={<Login setUser={setUser}/>}/>
+       <Route path='/signup' element={<SignUp/>}/>
+       {
+         user && <Route path='/workouts' element={<Workouts/>}/> //render this if both are true
+       }
+    </Routes>
+    <Footer/>
     </div>
   );
 }
