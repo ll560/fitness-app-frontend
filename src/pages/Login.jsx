@@ -46,7 +46,7 @@ const handleSubmit = async e => {
 
 
   return (
-
+    
     <Form className='mx-auto w-50 border p-3' onSubmit={handleSubmit}>
         <Form.Group className="mb-3" >
             <Form.Label htmlFor="exampleInputEmail1" className="form-label">Email</Form.Label>
@@ -70,6 +70,7 @@ const handleSubmit = async e => {
   </Button>
 
     </Form>
+    
   )
 }
 

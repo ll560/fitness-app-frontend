@@ -13,8 +13,8 @@ const Header = ({user, setUser, logOut }) => {
     logOut()
   }
   return (
-    <Navbar expand="lg" className='color-nav mb-5'>
-      <Container>
+    <Navbar expand="lg" className='color-nav mb-5' >
+      <Container className='d-flex'>
         <Navbar.Brand href="/" className="brand">Coach</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">

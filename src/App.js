@@ -9,6 +9,7 @@ import Footer from './components/Footer/Footer';
 import Workouts from './pages/Workouts';
 import Home from './pages/Home';
 import SignUp from './pages/SignUp';
+import CreateWorkout from './pages/CreateWorkout/CreateWorkout';
 
 import * as usersService from '../src/utilities/users-service'
 
@@ -32,6 +33,9 @@ const App = () => {
        <Route path='/signup' element={<SignUp/>}/>
        {
          user && <Route path='/workouts' element={<Workouts/>}/> //render this if both are true
+       }
+       {
+         user && <Route path='/workouts/createWorkout' element={<CreateWorkout/>}/>
        }
     </Routes>
     <Footer/>

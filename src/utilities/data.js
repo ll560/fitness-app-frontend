@@ -1,10 +1,20 @@
-const fitness = [
-    {
-        workout :"pushup"
+import axios from 'axios'
+import { getToken } from './users-service'
 
-    },{
-        workout :"deadlift"
+const BASE_URL = 'http://localhost:8080/api/v1/workouts'
+
+export const getWorkouts =async () => {
+    try{
+        const options = {
+            headers:{
+                Authorization: `Bearer ${ getToken() }`
+            }
+        }
+        const response = await axios.get(BASE_URL, options)
+        //console.log(response)
+        return response
+    } catch(e){
+        console.log(e)
     }
-    
-    
-]
+
+}

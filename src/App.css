@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: space-between;
   /* text-align: center; */
-  /* background-color: #282c34; */
+  
   height: 100vh;
 }
 
@@ -28,4 +28,8 @@
 
 .color-nav{
   background-color: #0099CC;
+}
+
+.d-flex{
+  margin-right: 26vw;
 }
