@@ -2,11 +2,13 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 //import "bootstrap/dist/css/bootstrap.min.css"
 import { Navbar, Nav, Container } from 'react-bootstrap'
-import { logOut } from '../../utilities/users-service';
+import styled from 'styled-components'
 
 
 const Header = ({user, setUser, logOut }) => {
   console.log('user', user)
+
+
 
   const handleLogOut = () => {
     setUser(null)
@@ -27,10 +29,10 @@ const Header = ({user, setUser, logOut }) => {
             ? 
             <>
             <Nav className='text'>Welcome &nbsp;</Nav>  &nbsp;
-            <form className='d-flex' role="search">
+            {/* <form className='d-flex' role="search">
               <input className='form-control me-2' type='search' placeholder='search' aria-label="search"/>
               <button className='btn btn-outline-success' type="submit">Search</button>
-              </form>
+              </form> */}
               <Nav.Link href="/workouts" className="nav_link">Workouts</Nav.Link>
               
               <Nav.Link href="/" onClick={handleLogOut}>Log Out </Nav.Link>

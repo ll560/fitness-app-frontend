@@ -8,8 +8,6 @@
 }
 
 
-
-
 .App-header {
   
   
@@ -29,7 +27,24 @@
 .color-nav{
   background-color: #0099CC;
 }
-
+.nav_link{
+  margin-left: 560px;
+}
 .d-flex{
   margin-right: 26vw;
+}
+
+/* Home */
+.row{
+  display: flex;
+  flex-direction: row;
+}
+.col{
+  display: flex;
+  flex-direction: column;
+  padding-top: 100px;
+
+}
+.nameText{
+  margin-top: 30px;
 }

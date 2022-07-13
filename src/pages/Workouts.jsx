@@ -1,5 +1,5 @@
 import { Button } from 'bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 
@@ -19,27 +19,29 @@ import {getWorkouts} from '../utilities/data'
 const Workouts = () => {
   const [workouts, setWorkouts] = useState([])
 
+  const navigate = useNavigate()
+
   useEffect(() => {
     (async () => {
       console.log('this is working')
       const workoutsRes = await getWorkouts()
-      
-        setWorkouts(workoutsRes.data)
+      setWorkouts(workoutsRes.data)
 
       })()
       
-      console.log('workouts', workouts)
+      console.log('workouts----------------', workouts)
   }, [])
     
   return (
     <div >
-    <Link to="/workouts/createWorkout" type="button" class="btn btn-primary mb-4">
+    <Link to="/workouts/createWorkout" type="button" className="btn btn-primary mb-4" >
       Add Workout</Link>
       <div className="row row-cols-1 row-cols-md-6 g-4">
         {
         workouts.map( workout => 
-          <Card style ={{width: '18rem', margin: '6px'}}>
-          <Card.Img variant='top' src={deadlift} className="rounded my-2"/>
+          <Card onClick={() => navigate(`/workouts/${workout._id}`, {state: workout})} 
+          key={workout._id} style ={{width: '18rem', margin: '6px'}}>
+          <Card.Img variant='top' src={workout.exerciseimage} className="rounded my-2"/>
           <Card.Body>
             <Card.Title>{workout.exercise}</Card.Title>
           </Card.Body>

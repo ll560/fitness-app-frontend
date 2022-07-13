@@ -1,21 +1,25 @@
 import React from 'react'
-import {useState} from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
+import { useState } from 'react';
 import * as workoutService from '../../utilities/data'
-import {useNavigate} from 'react-router-dom'
+
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 
-const CreateWorkout = () => {
+const UpdateWorkout = () => {
+
+   
     const [workoutDetails, setWorkoutDetails] = useState({
         exercise:'',
         exerciseimage:'',
         exercisecomment:''
     })
 
-const navigate = useNavigate()
-
+    const location = useLocation()
+    const navigate = useNavigate()
+    
     const handleChange = e => {
         setWorkoutDetails({
             ...workoutDetails,
@@ -43,8 +47,7 @@ const navigate = useNavigate()
           <Form.Control type="text" placeholder="exercise image" 
           onChange={handleChange}  
           name="exerciseimage" 
-          value={workoutDetails.exerciseimage}
-          />
+          value={workoutDetails.exerciseimage}/>
         </Form.Group>
       </Row>
 
@@ -54,13 +57,18 @@ const navigate = useNavigate()
          onChange={handleChange}  
          name="exercisecomment" 
          value={workoutDetails.exercisecomment}/>
-      </Form.Group>      
+      </Form.Group>
+
+
+
+        
 
       <Button variant="primary" type="submit">
-        Create Workout
+        Update Workout
       </Button>
     </Form>
-  );
+
+  )
 }
 
-export default CreateWorkout
+export default UpdateWorkout
