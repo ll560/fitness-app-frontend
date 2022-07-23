@@ -25,6 +25,12 @@ const handleChange = e =>{
   
 }
 
+//on click
+const handleClick =  e => {
+  e.preventDefault()
+  navigate('/signUp')
+}
+
 //sumbit
 
 const handleSubmit = async e => {
@@ -64,8 +70,12 @@ const handleSubmit = async e => {
                 value={credentials.password} />
   </Form.Group>
   
-  <Button className="mb-3" variant="primary" type="submit" >
+  <Button className="mb-3 " variant="primary" type="submit" >
     Sign In
+  </Button >
+
+  <Button className="mb-3 mx-4" variant="secondary" type="submit" onClick={handleClick}>
+     Create New Account 
   </Button>
 
     </Form>
